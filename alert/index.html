@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>弹窗</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="alert.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page">
+            <header class="bar bar-nav">
+                <a class="icon icon-left pull-left back"></a>
+                <h1 class="title">弹窗</h1>
+            </header>
+            <div class="content">
+                <p><a href="javascript:dialogAlart('您好alert');" class="button">alert</a></p>
+                <p><a href="javascript:dialogComfirm('您好confirm');" class="button button-light">confirm</a></p>
+            </div>
+        </div>
+        <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='alert.js' charset='utf-8'></script>
+        <!-- 默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行 -->
+    </div>
+</body>
+<script>
+    function dialogAlart(msg, callback) {
+        callback = callback || function () { };
+        $.alert({
+            title: '',
+            content: msg,
+            buttons: {
+                ok: {
+                    text: '好的',
+                    action: function () {
+                        callback();
+                    }
+                }
+            }
+        });
+    };
+    function dialogComfirm(msg, callback) {
+        callback = callback || function () { };
+        $.confirm({
+            title: '',
+            content: msg + '，是否下载创业赚钱？',
+            buttons: {
+                close: {
+                    text: '取消',
+                    action: function () {
+                        callback();
+                    }
+                },
+                ok: {
+                    text: '前往下载',
+                    action: function () {
+                        location.href = '//www.7518.cn/Index_wap.html';
+                    }
+                }
+            }
+        });
+    }
+
+</script>
+
+</html>
